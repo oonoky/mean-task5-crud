@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">
+            JSON-Server Crud REST API
+        </h1>
+        <form action="/editUser/<%=userData.id%>" method="post">
+            <input type="text" value="<%=userData.name%>" class="form-control" name="name" placeholder="Enter  Name" required><br>
+            <input type="number" value="<%=userData.age%>" class="form-control" name="age" placeholder="Enter Age" required><br>
+            <input type="text"  name="country" value="<%=userData.country%>" class="form-control"  placeholder="Enter Country" required><br>
+            <button class="btn btn-primary">Update User</button>
+        </form>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Country</th>
+                    <th>Edit User</th>
+                    <th>Delete User</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%if(data){%>
+                    <%data.forEach((user) => {%>
+                    
+                        <tr>
+                            <td><%=user.name%></td>
+                            <td><%=user.age%></td>
+                            <td><%=user.country%></td>
+                            <td>
+                                <a class="btn btn-info" href="/editUser/<%=user.id %>">Edit User</a>
+                            </td>
+                            <td>
+                                <a class="btn btn-danger" href="/delUser/<%=user.id%>">Delete User</a>
+                            </td>
+                        </tr>
+                    <%})%>
+                <%}%>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
